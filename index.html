@@ -98,6 +98,31 @@ a{color:inherit}
 .turn-list b{font-weight:700}
 @keyframes swap{0%{opacity:0;transform:translateY(40%)}3.5%,17%{opacity:1;transform:none}20%,100%{opacity:0;transform:translateY(-40%)}}
 
+/* hero image carousel */
+.hero-lower{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:stretch}
+.feature-card{align-self:stretch;min-width:0;padding:clamp(14px,2vw,22px);border:1px solid var(--line);border-radius:26px;background:color-mix(in srgb,var(--surface) 88%,transparent);box-shadow:0 18px 60px rgba(35,28,82,.08);display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.feature-card-top,.feature-controls{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.feature-count{font:500 .7rem var(--mono);letter-spacing:.08em;color:var(--muted);font-variant-numeric:tabular-nums}
+.feature-stage{position:relative;min-height:310px;aspect-ratio:1.12/1;overflow:hidden;border-radius:17px;background:var(--ink);isolation:isolate}
+.feature-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:scale(1.025);transition:opacity .55s ease,transform .8s ease,visibility .55s;overflow:hidden}
+.feature-slide.is-active{opacity:1;visibility:visible;transform:scale(1)}
+.feature-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,25,.02) 18%,rgba(10,8,25,.2) 42%,rgba(10,8,25,.88) 100%);pointer-events:none}
+.feature-slide img{display:block;width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.feature-slide figcaption{position:absolute;z-index:1;left:clamp(18px,3vw,28px);right:clamp(18px,3vw,28px);bottom:clamp(18px,3vw,28px);display:flex;flex-direction:column;align-items:flex-start;gap:8px;color:#fff}
+.feature-tag{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.86}
+.feature-slide strong{font:650 clamp(1.45rem,3vw,2.35rem)/1.02 var(--display);letter-spacing:-.025em;text-wrap:balance;max-width:15ch}
+.feature-slide small{font:400 .88rem/1.45 var(--body);color:rgba(255,255,255,.86);max-width:36ch}
+.feature-dots{display:flex;align-items:center;gap:8px}
+.feature-dot{width:8px;height:8px;border:0;border-radius:99px;padding:0;background:var(--muted);opacity:.4;cursor:pointer;transition:width .25s,opacity .25s,background .25s}
+.feature-dot.is-active{width:25px;opacity:1;background:var(--pink)}
+.feature-arrows{display:flex;gap:8px}
+.feature-arrows button{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);font:500 1.1rem var(--body);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.feature-arrows button:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.feature-card button:focus-visible{outline:2px solid var(--blue-ink);outline-offset:4px}
+@media(max-width:860px){.hero-lower{grid-template-columns:minmax(0,1fr)}.feature-card{max-width:640px;width:100%;margin-inline:auto}.feature-stage{min-height:320px}}
+@media(max-width:520px){.feature-card{padding:12px;border-radius:20px}.feature-stage{min-height:340px;aspect-ratio:.88/1}.feature-slide figcaption{left:18px;right:18px;bottom:18px}.feature-slide strong{font-size:1.7rem}.feature-slide small{font-size:.83rem}}
+@media(prefers-reduced-motion:reduce){.feature-slide,.feature-dot,.feature-arrows button{transition:none}}
+
 /* tools belt */
 .belt{border-block:1px solid var(--line);overflow:hidden;padding-block:16px}
 .belt-track{display:flex;width:max-content;animation:belt 46s linear infinite}
@@ -273,16 +298,36 @@ h2{font-family:var(--display);font-weight:650;font-size:clamp(2.3rem,6.2vw,4.6re
             <a class="btn ghost" href="#hello">Say hello</a>
           </div>
         </div>
-        <div class="turn">
-          <span class="turn-lead">I turn</span>
-          <ul class="turn-list">
-            <li style="--i:0">client calls <em>into</em> <b class="grad">user stories</b></li>
-            <li style="--i:1">user stories <em>into</em> <b class="grad">sprints that finish</b></li>
-            <li style="--i:2">messy data <em>into</em> <b class="grad">decisions</b></li>
-            <li style="--i:3">prompts <em>into</em> <b class="grad">published books</b></li>
-            <li style="--i:4">ideas <em>into</em> <b class="grad">working websites</b></li>
-          </ul>
-        </div>
+        <article class="feature-card" aria-label="A few things I work on">
+          <div class="feature-card-top"><span class="eyebrow">A little of what I do</span><span class="feature-count" id="feature-count">01 / 04</span></div>
+          <div class="feature-stage" id="feature-stage">
+            <figure class="feature-slide is-active" data-slide="0">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1100&q=85" alt="Analytics dashboard on a computer screen" fetchpriority="high">
+              <figcaption><span class="feature-tag">01 · Product thinking</span><strong>Turn complexity into clarity.</strong><small>Client needs, user stories and decisions that move a product forward.</small></figcaption>
+            </figure>
+            <figure class="feature-slide" data-slide="1" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=85" alt="People collaborating around a laptop">
+              <figcaption><span class="feature-tag">02 · Collaboration</span><strong>Bring people and ideas together.</strong><small>Aligning clients, designers and developers around the same goal.</small></figcaption>
+            </figure>
+            <figure class="feature-slide" data-slide="2" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1100&q=85" alt="Books arranged on a shelf">
+              <figcaption><span class="feature-tag">03 · Writing</span><strong>Make ideas worth sharing.</strong><small>Five published books on ChatGPT and AI prompt engineering.</small></figcaption>
+            </figure>
+            <figure class="feature-slide" data-slide="3" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1100&q=85" alt="A developer workspace with a laptop and code">
+              <figcaption><span class="feature-tag">04 · Side builds</span><strong>Learn by making things.</strong><small>Websites, AI experiments and ideas turned into working projects.</small></figcaption>
+            </figure>
+          </div>
+          <div class="feature-controls">
+            <div class="feature-dots" role="group" aria-label="Choose a featured slide">
+              <button type="button" class="feature-dot is-active" data-go="0" aria-label="Show slide 1" aria-pressed="true"></button>
+              <button type="button" class="feature-dot" data-go="1" aria-label="Show slide 2" aria-pressed="false"></button>
+              <button type="button" class="feature-dot" data-go="2" aria-label="Show slide 3" aria-pressed="false"></button>
+              <button type="button" class="feature-dot" data-go="3" aria-label="Show slide 4" aria-pressed="false"></button>
+            </div>
+            <div class="feature-arrows"><button type="button" id="feature-prev" aria-label="Previous image">←</button><button type="button" id="feature-next" aria-label="Next image">→</button></div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -666,6 +711,38 @@ h2{font-family:var(--display);font-weight:650;font-size:clamp(2.3rem,6.2vw,4.6re
   }
   buildWave();
   if('ResizeObserver' in window){new ResizeObserver(buildWave).observe(wave)}else{addEventListener('resize',buildWave)}
+
+  /* featured image carousel */
+  var featureSlides=Array.prototype.slice.call(document.querySelectorAll('.feature-slide'));
+  var featureDots=Array.prototype.slice.call(document.querySelectorAll('.feature-dot'));
+  var featureCount=document.getElementById('feature-count');
+  var featureIndex=0,featureTimer=0;
+  function showFeature(next){
+    featureIndex=(next+featureSlides.length)%featureSlides.length;
+    featureSlides.forEach(function(slide,i){
+      var active=i===featureIndex;
+      slide.classList.toggle('is-active',active);
+      slide.setAttribute('aria-hidden',active?'false':'true');
+    });
+    featureDots.forEach(function(dot,i){
+      var active=i===featureIndex;
+      dot.classList.toggle('is-active',active);
+      dot.setAttribute('aria-pressed',active?'true':'false');
+    });
+    featureCount.textContent=String(featureIndex+1).padStart(2,'0')+' / '+String(featureSlides.length).padStart(2,'0');
+  }
+  function stopFeatureTimer(){if(featureTimer){clearInterval(featureTimer);featureTimer=0}}
+  function startFeatureTimer(){
+    stopFeatureTimer();
+    if(!reduce&&!document.hidden)featureTimer=setInterval(function(){showFeature(featureIndex+1)},5500);
+  }
+  document.getElementById('feature-prev').addEventListener('click',function(){showFeature(featureIndex-1);startFeatureTimer()});
+  document.getElementById('feature-next').addEventListener('click',function(){showFeature(featureIndex+1);startFeatureTimer()});
+  featureDots.forEach(function(dot){dot.addEventListener('click',function(){showFeature(Number(dot.getAttribute('data-go')));startFeatureTimer()})});
+  document.getElementById('feature-stage').addEventListener('mouseenter',stopFeatureTimer);
+  document.getElementById('feature-stage').addEventListener('mouseleave',startFeatureTimer);
+  document.addEventListener('visibilitychange',function(){document.hidden?stopFeatureTimer():startFeatureTimer()});
+  showFeature(0);startFeatureTimer();
 
   /* copy address */
   var copy=document.getElementById('copy'),addr=document.getElementById('addr'),msg=document.getElementById('copied'),mt=0;
