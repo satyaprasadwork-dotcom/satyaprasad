@@ -358,6 +358,49 @@ h2{font-family:var(--display);font-weight:650;font-size:clamp(2.3rem,6.2vw,4.6re
   .author-profiles span{width:100%}
 }
 
+
+/* Refined book section: larger covers, less vertical overhead */
+.books-collection{padding:clamp(16px,1.6vw,22px);gap:10px}
+.books-heading{gap:3px}
+.books-heading .big{font-size:clamp(2.2rem,3.8vw,3rem);line-height:.85}
+.books-heading h3{font-size:clamp(1.35rem,1.8vw,1.7rem);line-height:1.05}
+.books-heading>p:last-child{font-size:.82rem;line-height:1.3;margin-top:2px}
+.book-group{gap:6px}
+.book-group-heading{padding-bottom:5px}
+.book-group-heading h4{font-size:clamp(1rem,1.4vw,1.2rem)}
+.book-grid{gap:8px}
+.book-item{gap:4px}
+.book-cover{width:min(100%,132px);max-width:none;border-radius:8px}
+.book-cover:hover{transform:translateY(-2px)}
+.book-cover.cover-fallback::before{inset:6px}
+.book-cover.cover-fallback::after{inset:10px;font-size:clamp(.78rem,1vw,.95rem)}
+.book-item h4{font-size:.78rem;line-height:1.12}
+.book-item p{display:none}
+.book-link{font-size:.62rem;padding-top:0;line-height:1.15}
+.author-profiles{padding-top:8px;gap:6px 12px;font-size:.74rem}
+.author-profiles a{font-size:.64rem}
+@media(max-width:900px){
+  .books-collection{gap:9px}
+  .book-cover{width:min(100%,112px)}
+  .book-item h4{font-size:.75rem}
+}
+@media(max-width:520px){
+  .books-collection{padding:12px;gap:12px}
+  .books-heading .big{font-size:2.25rem}
+  .books-heading h3{font-size:1.3rem}
+  .books-heading>p:last-child{font-size:.76rem}
+  .book-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .book-cover{width:100%;max-width:none;border-radius:5px}
+  .book-cover.cover-fallback::before{inset:3px}
+  .book-cover.cover-fallback::after{inset:5px;font-size:.62rem;padding:2px}
+  .book-item{gap:4px}
+  .book-item h4{font-size:.62rem;line-height:1.08;overflow-wrap:anywhere}
+  .book-link{font-size:.52rem;letter-spacing:0}
+  .book-group-heading h4{font-size:.95rem}
+  .book-group-heading span{font-size:.56rem}
+  .author-profiles{gap:6px 10px}
+}
+
 </style>
 
 <nav class="bar" aria-label="Main">
