@@ -114,10 +114,10 @@ a{color:inherit}
 .feature-slide.is-active{opacity:1;visibility:visible;transform:scale(1)}
 .feature-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,25,.02) 18%,rgba(10,8,25,.2) 42%,rgba(10,8,25,.88) 100%);pointer-events:none}
 .feature-slide img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;position:absolute;inset:0}
-.feature-slide figcaption{position:absolute;z-index:1;left:clamp(18px,2.5vw,28px);right:clamp(18px,2.5vw,28px);bottom:clamp(18px,2.5vw,28px);display:flex;flex-direction:column;align-items:flex-start;gap:8px;color:#fff}
+.feature-slide figcaption{position:absolute;z-index:1;left:clamp(16px,2.2vw,24px);right:clamp(16px,2.2vw,24px);bottom:clamp(16px,2.2vw,24px);display:flex;flex-direction:column;align-items:flex-start;gap:6px;color:#fff}
 .feature-tag{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9}
-.feature-slide strong{font:650 clamp(1.4rem,2.3vw,2.1rem)/1.02 var(--display);letter-spacing:-.025em;text-wrap:balance;max-width:15ch}
-.feature-slide small{font:400 .86rem/1.45 var(--body);color:rgba(255,255,255,.9);max-width:36ch}
+.feature-slide strong{font:650 clamp(1.05rem,1.7vw,1.5rem)/1.08 var(--display);letter-spacing:-.02em;text-wrap:balance;max-width:19ch}
+.feature-slide small{font:400 .74rem/1.35 var(--body);color:rgba(255,255,255,.92);max-width:34ch}
 .feature-dots{display:flex;align-items:center;gap:8px}
 .feature-dot{width:8px;height:8px;border:0;border-radius:99px;padding:0;background:var(--muted);opacity:.4;cursor:pointer;transition:width .25s,opacity .25s,background .25s}
 .feature-dot.is-active{width:25px;opacity:1;background:var(--pink)}
@@ -145,9 +145,9 @@ a{color:inherit}
   .btn{font-size:.72rem;padding:.85em 1.05em}
   .feature-card{padding:11px;border-radius:20px}
   .feature-stage{aspect-ratio:1.12/1}
-  .feature-slide figcaption{left:18px;right:18px;bottom:18px}
-  .feature-slide strong{font-size:1.65rem}
-  .feature-slide small{font-size:.82rem}
+  .feature-slide figcaption{left:15px;right:15px;bottom:15px;gap:5px}
+  .feature-slide strong{font-size:1.25rem;line-height:1.08;max-width:20ch}
+  .feature-slide small{font-size:.7rem;line-height:1.3;max-width:34ch}
 }
 @media(prefers-reduced-motion:reduce){.feature-slide,.feature-dot,.feature-arrows button{transition:none}}
 /* tools belt */
