@@ -318,6 +318,46 @@ h2{font-family:var(--display);font-weight:650;font-size:clamp(2.3rem,6.2vw,4.6re
   .row h3 span{background-size:100% .09em}
   .timeline::after{transform:scaleY(var(--p,0))}
 }
+
+/* Compact book collection: keep both shelves visible with less vertical space */
+.books-collection{padding:clamp(16px,1.8vw,24px);gap:14px}
+.books-heading{gap:5px}
+.books-heading .big{font-size:clamp(2.5rem,4.5vw,3.4rem)}
+.books-heading h3{font-size:clamp(1.35rem,2vw,1.7rem)}
+.books-heading>p:last-child{font-size:.88rem;line-height:1.4}
+.book-group{gap:8px}
+.book-group-heading{padding-bottom:6px}
+.book-group-heading h4{font-size:clamp(1rem,1.6vw,1.25rem)}
+.book-grid{gap:10px}
+.book-item{gap:5px;align-items:center;text-align:center}
+.book-cover{width:min(100%,76px);aspect-ratio:2/3;border-radius:7px;flex:none}
+.book-cover:hover{transform:translateY(-2px)}
+.book-cover.cover-fallback::before{inset:5px}
+.book-cover.cover-fallback::after{inset:8px;font-size:.72rem}
+.book-item h4{font-size:.78rem;line-height:1.15}
+.book-item p{display:none}
+.book-link{font-size:.61rem;padding-top:0;line-height:1.25}
+.author-profiles{padding-top:10px;gap:8px 14px;font-size:.76rem}
+.author-profiles a{font-size:.65rem}
+@media(max-width:900px){
+  .book-grid{gap:10px}
+  .book-item h4{font-size:.78rem}
+}
+@media(max-width:520px){
+  .books-collection{padding:14px;gap:16px}
+  .books-heading .big{font-size:2.5rem}
+  .books-heading h3{font-size:1.35rem}
+  .book-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+  .book-cover{width:100%;max-width:58px}
+  .book-item{gap:4px}
+  .book-item h4{font-size:.67rem;overflow-wrap:anywhere}
+  .book-link{font-size:.56rem;letter-spacing:0}
+  .book-group-heading h4{font-size:1rem}
+  .book-group-heading span{font-size:.58rem}
+  .author-profiles{align-items:flex-start;flex-direction:row;gap:8px 12px}
+  .author-profiles span{width:100%}
+}
+
 </style>
 
 <nav class="bar" aria-label="Main">
