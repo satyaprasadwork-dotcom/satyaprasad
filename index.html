@@ -222,6 +222,34 @@ h2{font-family:var(--display);font-weight:650;font-size:clamp(2.3rem,6.2vw,4.6re
 .card h3,.narrate h3,.builds h3,.rooms h3{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.1;letter-spacing:-.02em}
 .card p,.narrate p,.builds p{color:var(--muted);max-width:44ch}
 .books{grid-column:span 5;background:color-mix(in srgb,var(--pink) 8%,var(--surface))}
+.books-collection{grid-column:1/-1;gap:clamp(22px,3vw,34px);background:color-mix(in srgb,var(--pink) 5%,var(--surface))}
+.books-heading{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.books-heading .big{font:650 clamp(3rem,7vw,5.5rem)/.9 var(--display);letter-spacing:-.06em;color:var(--pink-ink)}
+.books-heading h3{font-size:clamp(1.8rem,3vw,2.5rem)}
+.books-heading>p:last-child{max-width:55ch;color:var(--muted)}
+.book-group{display:flex;flex-direction:column;gap:18px}
+.book-group-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.book-group-heading h4{font:600 clamp(1.2rem,2.3vw,1.65rem)/1.15 var(--display);letter-spacing:-.02em}
+.book-group-heading span{font:500 .68rem var(--mono);letter-spacing:.1em;color:var(--muted);white-space:nowrap}
+.book-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(10px,1.8vw,20px)}
+.book-item{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+.book-cover{position:relative;display:block;width:100%;aspect-ratio:2/3;overflow:hidden;border-radius:10px;background:var(--book-accent);border:1px solid var(--line);box-shadow:0 7px 18px rgba(21,19,43,.12);isolation:isolate;transition:transform .25s,box-shadow .25s}
+.book-cover:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(21,19,43,.18)}
+.book-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.book-cover.cover-fallback{background:linear-gradient(145deg,color-mix(in srgb,var(--book-accent) 88%,var(--surface)),var(--surface))}
+.book-cover.cover-fallback::before{content:"";position:absolute;inset:8px;border:1px solid color-mix(in srgb,var(--ink) 35%,transparent);border-radius:4px}
+.book-cover.cover-fallback::after{content:attr(data-fallback);position:absolute;inset:14px;display:grid;place-items:center;text-align:center;padding:5px;color:var(--ink);font:650 clamp(.75rem,1.3vw,1.1rem)/1.12 var(--display);letter-spacing:-.025em;text-wrap:balance}
+.book-item h4{font:600 clamp(.86rem,1.25vw,1rem)/1.2 var(--display);letter-spacing:-.015em}
+.book-item p{font-size:.84rem;line-height:1.45;color:var(--muted)}
+.book-link{margin-top:auto;padding-top:3px;text-decoration:none;color:var(--blue-ink);font:500 .7rem var(--mono);letter-spacing:.015em}
+.book-link:hover{text-decoration:underline;text-underline-offset:3px}
+.author-profiles{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-top:18px;border-top:1px solid var(--line);font-size:.85rem}
+.author-profiles span{color:var(--muted)}
+.author-profiles a{font:500 .72rem var(--mono);color:var(--blue-ink);text-decoration:none}
+.author-profiles a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.book-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.book-item h4{font-size:1rem}}
+@media(max-width:520px){.books-collection{padding:18px;gap:24px}.book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}.book-group-heading h4{font-size:1.2rem}.book-group-heading span{font-size:.62rem}.book-item h4{font-size:.96rem}.book-item p{font-size:.82rem}.book-cover.cover-fallback::after{font-size:1rem}.author-profiles{align-items:flex-start;flex-direction:column;gap:8px}}
+
 .ovation{grid-column:span 7;background:color-mix(in srgb,var(--blue) 8%,var(--surface))}
 .narrate{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:24px 48px;align-items:center;padding-block:30px;border-block:1px solid var(--line)}
 .builds{grid-column:span 5;display:flex;flex-direction:column;gap:14px}
@@ -489,17 +517,113 @@ h2{font-family:var(--display);font-weight:650;font-size:clamp(2.3rem,6.2vw,4.6re
       <p class="intro">Books, stories told out loud, and a habit of building things to see how they work.</p>
 
       <div class="grid">
-        <article class="card books">
-          <div class="shelf" aria-hidden="true">
-            <i style="--h:150px;--c:var(--pink);--t:-2deg;--k:0"><u>AI PROMPTS</u></i>
-            <i style="--h:128px;--c:var(--blue);--t:1deg;--k:1"><u>CHATGPT</u></i>
-            <i style="--h:162px;--c:var(--sun);--tc:#15132B;--t:-1deg;--k:2"><u>AI PROMPTS</u></i>
-            <i style="--h:136px;--c:var(--mint);--tc:#15132B;--t:2deg;--k:3"><u>CHATGPT</u></i>
-            <i style="--h:154px;--c:var(--ink);--tc:var(--paper);--t:-1deg;--k:4"><u>AI PROMPTS</u></i>
+        <article class="card books books-collection">
+          <div class="books-heading">
+            <p class="big">10</p>
+            <h3>Books on Amazon</h3>
+            <p>Two sides of my writing: practical explorations of AI, and stories about the human experience.</p>
           </div>
-          <p class="big">5</p>
-          <h3>Books on Amazon</h3>
-          <p>I published five books on ChatGPT and AI prompts.</p>
+          <section class="book-group" aria-labelledby="ai-books-heading">
+            <div class="book-group-heading">
+              <h4 id="ai-books-heading">AI &amp; Technology</h4>
+              <span>05 BOOKS</span>
+            </div>
+            <div class="book-grid">
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0F6KGPZXW" target="_blank" rel="noopener noreferrer" aria-label="View ChatGPT Side Hustles on Amazon" data-fallback="ChatGPT Side Hustles" style="--book-accent:var(--pink)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0F6KGPZXW.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of ChatGPT Side Hustles" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>ChatGPT Side Hustles</h4>
+            <p>AI-powered automation and side hustles</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0F6KGPZXW" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0F4RJGHWG" target="_blank" rel="noopener noreferrer" aria-label="View ChatGPT Hacks for Beginners on Amazon" data-fallback="ChatGPT Hacks for Beginners" style="--book-accent:var(--blue)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0F4RJGHWG.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of ChatGPT Hacks for Beginners" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>ChatGPT Hacks for Beginners</h4>
+            <p>Shortcuts and productivity</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0F4RJGHWG" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FHGXMK6G" target="_blank" rel="noopener noreferrer" aria-label="View The Algorithm and Us on Amazon" data-fallback="The Algorithm and Us" style="--book-accent:var(--sun)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FHGXMK6G.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of The Algorithm and Us" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>The Algorithm and Us</h4>
+            <p>Technology, algorithms and taking back control</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FHGXMK6G" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FCFWP8NW" target="_blank" rel="noopener noreferrer" aria-label="View Hello, AI: Are You Listening? on Amazon" data-fallback="Hello, AI: Are You Listening?" style="--book-accent:var(--mint)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FCFWP8NW.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of Hello, AI: Are You Listening?" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>Hello, AI: Are You Listening?</h4>
+            <p>Work smarter, live better and lead the future</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FCFWP8NW" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FBMFB6TV" target="_blank" rel="noopener noreferrer" aria-label="View Proven Ways to Make Money with ChatGPT on Amazon" data-fallback="Proven Ways to Make Money with ChatGPT" style="--book-accent:var(--pink)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FBMFB6TV.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of Proven Ways to Make Money with ChatGPT" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>Proven Ways to Make Money with ChatGPT</h4>
+            <p>Practical ways to explore AI tools</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FBMFB6TV" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+            </div>
+          </section>
+          <section class="book-group" aria-labelledby="fiction-books-heading">
+            <div class="book-group-heading">
+              <h4 id="fiction-books-heading">Fiction &amp; Reflective Writing</h4>
+              <span>05 BOOKS</span>
+            </div>
+            <div class="book-grid">
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FQWLQ77Y" target="_blank" rel="noopener noreferrer" aria-label="View The Name I Almost Forgot on Amazon" data-fallback="The Name I Almost Forgot" style="--book-accent:var(--blue)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FQWLQ77Y.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of The Name I Almost Forgot" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>The Name I Almost Forgot</h4>
+            <p>A reflective story of silence and memory</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FQWLQ77Y" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FND8Y4VX" target="_blank" rel="noopener noreferrer" aria-label="View The Distance Between You and Me on Amazon" data-fallback="The Distance Between You and Me" style="--book-accent:var(--sun)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FND8Y4VX.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of The Distance Between You and Me" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>The Distance Between You and Me</h4>
+            <p>Friendship and loneliness</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FND8Y4VX" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FMLM6B6C" target="_blank" rel="noopener noreferrer" aria-label="View Fading Footprints on Amazon" data-fallback="Fading Footprints" style="--book-accent:var(--mint)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FMLM6B6C.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of Fading Footprints" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>Fading Footprints</h4>
+            <p>Burning memories and heartbreak</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FMLM6B6C" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FMNGB17Q" target="_blank" rel="noopener noreferrer" aria-label="View Nine Years, Goodbye on Amazon" data-fallback="Nine Years, Goodbye" style="--book-accent:var(--pink)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FMNGB17Q.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of Nine Years, Goodbye" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>Nine Years, Goodbye</h4>
+            <p>A journey through heartbreak</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FMNGB17Q" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="book-item">
+            <a class="book-cover" href="https://www.amazon.com/dp/B0FM43253C" target="_blank" rel="noopener noreferrer" aria-label="View Between Chapters on Amazon" data-fallback="Between Chapters" style="--book-accent:var(--blue)">
+              <img src="https://images-na.ssl-images-amazon.com/images/P/B0FM43253C.01._SCLZZZZZZZ_SX500_.jpg" alt="Cover of Between Chapters" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentNode.classList.add('cover-fallback')">
+            </a>
+            <h4>Between Chapters</h4>
+            <p>New horizons and rediscovery</p>
+            <a class="book-link" href="https://www.amazon.com/dp/B0FM43253C" target="_blank" rel="noopener noreferrer">View on Amazon <span aria-hidden="true">↗</span></a>
+          </article>
+            </div>
+          </section>
+          <div class="author-profiles">
+            <span>Find my author profiles</span>
+            <a href="https://www.amazon.com/stores/Satya-Prasad-Tumpala/author/B0FMFQ5PMN" target="_blank" rel="noopener noreferrer">Satya Prasad Tumpala ↗</a>
+            <a href="https://www.amazon.com/stores/Satya-Prasad/author/B0F4WR22RF" target="_blank" rel="noopener noreferrer">Satya Prasad ↗</a>
+          </div>
         </article>
 
         <article class="card ovation">
