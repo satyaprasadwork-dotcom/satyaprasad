@@ -113,7 +113,7 @@ a{color:inherit}
 .feature-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:scale(1.025);transition:opacity .55s ease,transform .8s ease,visibility .55s;overflow:hidden}
 .feature-slide.is-active{opacity:1;visibility:visible;transform:scale(1)}
 .feature-slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,25,.02) 18%,rgba(10,8,25,.2) 42%,rgba(10,8,25,.88) 100%);pointer-events:none}
-.feature-slide img{display:block;width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.feature-slide img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center;position:absolute;inset:0}
 .feature-slide figcaption{position:absolute;z-index:1;left:clamp(18px,2.5vw,28px);right:clamp(18px,2.5vw,28px);bottom:clamp(18px,2.5vw,28px);display:flex;flex-direction:column;align-items:flex-start;gap:8px;color:#fff}
 .feature-tag{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.9}
 .feature-slide strong{font:650 clamp(1.4rem,2.3vw,2.1rem)/1.02 var(--display);letter-spacing:-.025em;text-wrap:balance;max-width:15ch}
@@ -540,6 +540,7 @@ h2{font-family:var(--display);font-weight:650;font-size:clamp(2.3rem,6.2vw,4.6re
               <button type="button" class="feature-dot" data-go="3" aria-label="Show slide 4" aria-pressed="false"></button>
               <button type="button" class="feature-dot" data-go="4" aria-label="Show slide 5" aria-pressed="false"></button>
               <button type="button" class="feature-dot" data-go="5" aria-label="Show slide 6" aria-pressed="false"></button>
+            </div>
             <div class="feature-arrows"><button type="button" id="feature-prev" aria-label="Previous image">←</button><button type="button" id="feature-next" aria-label="Next image">→</button></div>
           </div>
         </article>
