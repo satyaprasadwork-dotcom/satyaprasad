@@ -1,75 +1,37 @@
 # Satya Prasad | Personal Portfolio
 
-A personal portfolio website for Satya Prasad, showcasing professional experience, product management work, interests, and ways to connect.
+Live website: https://satyaprasad.com
 
-**Live website:** https://satyaprasad.com
+A static portfolio and publication space covering professional experience, ten books, independent projects and practical product-management essays.
 
-## Overview
+## Structure
 
-The site is designed as a responsive, single-page portfolio with a clear visual identity and a focus on readability across desktop, tablet, and mobile screens.
+- `index.html`: portfolio homepage, career timeline, books and carousel
+- `assets/css/site.css`: existing visual design, animations and responsive layout
+- `assets/css/pages.css`: accessible layouts for supporting pages
+- `assets/js/site.js`: homepage interaction logic
+- `assets/js/pages.js`: supporting-page theme toggle
+- `assets/js/consent.js`: optional analytics/advertising opt-in controls
+- `about.html`, `projects.html`, `insights.html`: informational pages
+- `insights/*.html`: original articles, with illustrative scenarios clearly marked
+- `privacy.html`, `terms.html`: data-use disclosures and site terms
+- `sitemap.xml`, `robots.txt`, `ads.txt`: discovery and publisher declarations
+- `assets/images/`: carousel imagery; HEIC files require conversion to JPEG/WebP for broad browser support
 
-## Highlights
+## Optional tracking and privacy
 
-- **Introduction and profile:** A prominent introduction and overview of Satya's work.
-- **Career and experience:** A structured view of professional experience and product-focused work.
-- **Interests beyond work:** Space for personal interests and creative pursuits.
-- **Image carousel:** A visual feature section on the landing page.
-- **Responsive layout:** Flexible layouts, mobile-friendly navigation, and responsive imagery.
-- **Accessibility basics:** Semantic page structure, visible keyboard focus, and reduced-motion-aware styling where supported.
-- **Analytics and insights:** Google Analytics 4 and Microsoft Clarity tracking.
-- **Search engine discovery:** A sitemap and robots.txt file are included at the site root.
+Optional Google Analytics (`G-K44B9PCZ16`), Microsoft Clarity (`yz9non0rsk`) and Google AdSense (`ca-pub-7937216909291905`) are loaded only after a visitor accepts optional tools. The preference is stored in browser local storage. The website uses external Google Fonts and Amazon book-cover images independently of this choice; these are disclosed in the privacy policy.
 
-## Technology
+**Important compliance limitation:** the local preference panel is **not** a Google-certified IAB TCF consent-management platform. To serve personalised ads in EEA/UK/Switzerland, configure a Google-certified CMP through AdSense Privacy & Messaging or an approved provider and verify the integration. Approval, monetisation and legal compliance cannot be guaranteed by repository code alone. Review hosting access logs and privacy claims against the actual hosting configuration.
 
-This is a lightweight static website built with HTML, CSS, and JavaScript. Fonts and selected visual assets are loaded from external providers.
+## Deployment and QA
 
-## Repository structure
+Publish the `main` branch through the configured host. Verify https://satyaprasad.com/ and all sitemap URLs, including images, after each deploy. The GitHub Actions quality workflow performs static validation. The image-conversion workflow converts HEIC carousel assets to JPEG on a macOS runner and commits resulting paths, subject to workflow permissions.
 
-```text
-.
-├── index.html
-├── sitemap.xml
-├── robots.txt
-└── README.md
-```
+For local testing, use `python3 -m http.server 8000` and open `http://localhost:8000` (opening local files directly may not behave like production).
 
-Additional assets or separate stylesheets and scripts may be added as the site evolves.
+Checklist: responsive widths, dark/light mode, carousel arrows/pause/keyboard, privacy accept/reject, external link checks, structured-data validation, mobile speed, Search Console indexing, Bing verification, ads.txt status and CMP account setup.
 
-## Local preview
+## Contact
 
-1. Clone or download this repository.
-2. Open `index.html` in a browser.
-
-For a more realistic local preview, run a simple static HTTP server from the repository root.
-
-## Deployment
-
-The site is connected to the hosting workflow for **satyaprasad.com**. Changes committed to the configured deployment branch can be published by the hosting integration. After deployment, verify the live page and check the browser console for errors.
-
-## Search engine files
-
-- Sitemap: https://satyaprasad.com/sitemap.xml
-- Robots: https://satyaprasad.com/robots.txt
-
-The sitemap currently lists the homepage. Update it if additional public pages are added.
-
-## Analytics
-
-The site includes Google Analytics 4 and Microsoft Clarity. Keep tracking snippets in the document head and avoid adding duplicate copies. Review each provider's dashboard to confirm that data is being received after deployment.
-
-## Maintenance checklist
-
-- Test the homepage at mobile, tablet, and desktop widths.
-- Check carousel controls, links, and navigation after changes.
-- Use descriptive alternative text for meaningful images.
-- Optimize image dimensions and file sizes before adding new assets.
-- Keep page titles, descriptions, and social-sharing metadata accurate.
-- Update `sitemap.xml` when new public URLs are added.
-- Ensure `robots.txt` points to the canonical sitemap URL.
-- Verify production changes after the hosting deployment completes.
-
-## Ownership
-
-This repository contains the personal portfolio website of Satya Prasad.
-
-For professional enquiries, use the contact options published on the live website.
+satyaprasadwork@gmail.com

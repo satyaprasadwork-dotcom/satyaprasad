@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://satyaprasad.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://satyaprasad.com/</loc></url>
+  <url><loc>https://satyaprasad.com/about.html</loc></url>
+  <url><loc>https://satyaprasad.com/projects.html</loc></url>
+  <url><loc>https://satyaprasad.com/insights.html</loc></url>
+  <url><loc>https://satyaprasad.com/insights/from-requests-to-releases.html</loc></url>
+  <url><loc>https://satyaprasad.com/insights/evaluating-ai-features.html</loc></url>
+  <url><loc>https://satyaprasad.com/privacy.html</loc></url>
+  <url><loc>https://satyaprasad.com/terms.html</loc></url>
 </urlset>

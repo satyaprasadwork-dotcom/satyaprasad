@@ -1,0 +1,2 @@
+(function(){var root=document.documentElement;try{var s=localStorage.getItem('sp-theme');if(s==='light'||s==='dark')root.setAttribute('data-theme',s)}catch(e){}
+var b=document.getElementById('page-theme');if(b)b.addEventListener('click',function(){var dark=getComputedStyle(root).colorScheme.indexOf('dark')!==-1;var n=dark?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('sp-theme',n)}catch(e){}})})();
