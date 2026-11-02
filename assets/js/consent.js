@@ -30,6 +30,7 @@
     try{localStorage.setItem(storageKey,value)}catch(e){}
     if(banner)banner.hidden=true;
     if(value==='accepted')activate();
+    else if(window.__spOptionalLoaded)window.location.reload();
   }
   if(banner){
     banner.querySelector('[data-consent-accept]').addEventListener('click',function(){set('accepted')});
