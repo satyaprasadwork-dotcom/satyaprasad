@@ -1,0 +1,56 @@
+name: Convert HEIC carousel photos
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/convert-legacy-images.yml'
+      - 'assets/images/*.heic'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: convert-heic-images-main
+  cancel-in-progress: false
+jobs:
+  convert:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Convert browser-incompatible HEIC photos to JPEG
+        shell: bash
+        run: |
+          shopt -s nullglob
+          for input in assets/images/*.heic; do
+            target="${input%.heic}.jpg"
+            if [ ! -f "$target" ]; then
+              echo "Converting $input to $target"
+              sips -s format jpeg "$input" --out "$target" >/dev/null
+              sips -s formatOptions 82 "$target" >/dev/null
+              sips -Z 1600 "$target" >/dev/null
+            fi
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html=Path('index.html')
+          text=html.read_text(encoding='utf-8')
+          original=text
+          for m in set(re.findall(r'assets/images/[a-zA-Z0-9_-]+\.heic',text)):
+              new=m[:-5]+'.jpg'
+              if Path(new).exists():
+                  text=text.replace(m,new)
+          if text!=original:
+              html.write_text(text,encoding='utf-8')
+          PY
+      - name: Commit converted photos and HTML references
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/images/*.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "Convert carousel HEIC photos to compatible JPEG"
+            git push
+          fi

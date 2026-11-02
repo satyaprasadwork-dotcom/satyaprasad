@@ -1,0 +1,24 @@
+name: Portfolio quality checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/js/site.js
+          node --check assets/js/pages.js
+          node --check assets/js/consent.js
+      - name: Validate HTML metadata, internal links and sitemap
+        run: node scripts/check-site.mjs
